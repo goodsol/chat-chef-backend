@@ -5,6 +5,13 @@ import * as dotenv from "dotenv";
 
 const app = express();
 
+// .env > CLIENT_URL=http://localhost:3000/
+// const corsOption = {
+//   origin: process.env.CLIENT_URL,
+//   credentials: true
+// }
+
+// app.use(cors(corsOption));
 app.use(cors());
 
 // 프론트엔드에서 받은 json형태의 데이터를 자바스크립트 객체로 파싱(변환)하여 사용
@@ -48,7 +55,6 @@ app.post("/recipe", async (req, res) => {
       top_p: 1,
     });
     const data = [...messages, response.choices[0].message];
-    console.log("data", data);
     res.json({ data });
   } catch (error) {
     console.log(error);
