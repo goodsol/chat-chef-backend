@@ -5,14 +5,12 @@ import * as dotenv from "dotenv";
 
 const app = express();
 
-// .env > CLIENT_URL=http://localhost:3000/
-// const corsOption = {
-//   origin: process.env.CLIENT_URL,
-//   credentials: true
-// }
+const corsOption = {
+  origin: "https://chef-sol.netlify.app", // 프론트엔드 배포 주소
+  credentials: true,
+};
 
-// app.use(cors(corsOption));
-app.use(cors());
+app.use(cors(corsOption));
 
 // 프론트엔드에서 받은 json형태의 데이터를 자바스크립트 객체로 파싱(변환)하여 사용
 app.use(express.json()); // for parsing application/json
